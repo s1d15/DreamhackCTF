@@ -1,0 +1,13 @@
+from z3 import *
+
+data = [0x49, 0x60, 0x67, 0x74, 0x63, 0x67, 0x42, 0x66, 0x80, 0x78, 0x69, 0x69, 0x7B, 0x99, 0x6D, 0x88, 0x68, 0x94, 0x9F, 0x8D, 0x4D, 0xA5, 0x9D, 0x45]
+
+s = Solver()
+user_input = [BitVec(f'c{i}', 8) for i in range(len(data))]
+
+for i, byte in enumerate(data):
+    s.add(BitVecVal(byte, 8) == (BitVecVal(i, 8) ^ user_input[i]) + BitVecVal(i * 2, 8))
+
+s.check()
+m = s.model()
+print(''.join([chr(m[user_input[i]].as_long()) for i in range(len(data))]))
