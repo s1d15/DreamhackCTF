@@ -1,0 +1,1 @@
+flag = 'Comp4re_the_arr4y'
