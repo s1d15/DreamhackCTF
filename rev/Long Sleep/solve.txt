@@ -1,0 +1,1 @@
+Apply patches to skip the sleep() function and continue execution after integrity_check() detected
