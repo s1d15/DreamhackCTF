@@ -2,3 +2,6 @@
 *.log
 flag*
 *.i64
+*.id*
+*.nam
+*.til
